@@ -22,7 +22,7 @@ Without argument, `todu -r` is used.
 ## stm
 small tasks manager in bash.
 
-**Adapted for **`systemd`** !**
+**Adapted for** `systemd` **!**
 
 ##### Install
 Just copy in your $PATH.
