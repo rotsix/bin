@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# rotsix - (c) wtfpl 2016
+# rotsix - (c) wtfpl 2017
 # a smal todo list manager using notify-send
 
 import getopt
