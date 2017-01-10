@@ -3,7 +3,7 @@
 Here is some small scripts I use.
 
 ## todo
-small todo list in python 3.6+ (f-strings).
+Small todo list in python 3.6+ (f-strings).
 
 ##### Install
 Just copy in your `$PATH`.
@@ -20,7 +20,7 @@ todo [-d | --delete] <number>
 Without argument, `todu -r` is used.
 
 ## stm
-small tasks manager in bash.
+Small tasks manager in bash.
 
 **Adapted for** `systemd` **!**
 
@@ -39,3 +39,34 @@ stm mysql|sql|sqld|mysqld start|up|stop|kill|restart|on|stop|off
 stm http|httpd start|up|stop|kill|restart|on|stop|off
 stm lamp|LAMP start|up|stop|kill|restart|on|stop|off
 ```
+
+## popup
+Little script to display pop-ups using lemonboy's bar.
+
+##### Depends
+This script depends on lemonboy's bar (since it's a little wrapper).
+You can use the xft-fork for xft fonts.
+
+##### Install
+Just copy in your `$PATH`.
+
+##### Config
+You can directly modify the script to adapt to your uses.
+
+##### Usage
+```
+popup [-h|-t duration|-g geometry|-p position|-B bgcolor|-F fgcolor|-f font] <thing to display>"
+```
+
+There is some defaults : 
+
+```
+duration = 5
+geometry = 100x40+20+20
+position = center
+bgcolor = '#202020'
+fgcolor = '#C6C6C6'
+font = mono-8
+font2 = FontAwesome-10 # useful for icons
+```
+
