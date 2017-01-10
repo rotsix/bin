@@ -6,7 +6,7 @@ Here is some small scripts I use.
 small todo list in python 3.6+ (f-strings).
 
 ##### Install
-Just copy in your $PATH
+Just copy in your `$PATH`.
 
 ##### Config
 You can directly modify the script to adapt to your uses.
@@ -25,7 +25,7 @@ small tasks manager in bash.
 **Adapted for** `systemd` **!**
 
 ##### Install
-Just copy in your $PATH.
+Just copy in your `$PATH`.
 
 ##### Config
 You can directly modify the script to adapt to your uses.
