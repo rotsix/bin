@@ -2,7 +2,6 @@
 
 Here is some small scripts I use.
 
-<<<<<<< HEAD
 ## todo
 small todo list in python 3.6+ (f-strings).
 
@@ -23,7 +22,7 @@ Without argument, `todu -r` is used.
 ## stm
 small tasks manager in bash.
 
-*Adapted for `systemd` !*
+**Adapted for **`systemd`** !**
 
 ##### Install
 Just copy in your $PATH.
