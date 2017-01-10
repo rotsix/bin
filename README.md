@@ -2,16 +2,17 @@
 
 Here is some small scripts I use.
 
+<<<<<<< HEAD
 ## todo
 small todo list in python 3.6+ (f-strings).
 
-### Install
-Just copy in your $PATH.
+##### Install
+Just copy in your $PATH
 
-### Config
+##### Config
 You can directly modify the script to adapt to your uses.
 
-### Usage
+##### Usage
 ```
 todo [-r | --read]
 todo [-a | --add] <note>
@@ -24,13 +25,13 @@ small tasks manager in bash.
 
 *Adapted for `systemd` !*
 
-### Install
+##### Install
 Just copy in your $PATH.
 
-### Config
+##### Config
 You can directly modify the script to adapt to your uses.
 
-### Usage
+##### Usage
 ```
 stm backlight|bl +|-|up|down|get [value]
 stm vol|volume|v +|-|up|toggle|down [value]
