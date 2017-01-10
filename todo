@@ -1,0 +1,164 @@
+#!/usr/bin/env python
+#
+# rotsix - (c) wtfpl 2016
+# a smal todo list manager using notify-send
+
+import getopt
+import os, sys
+from subprocess import call
+
+
+# image is used by notify-send, set to "" to disable
+home = os.environ['HOME']
+image = f"{home}/usr/wallpapers/pattern/wall.png"
+
+
+def usage():
+	print('todo [-r | --read]')
+	print('todo [-a | --add] <note>')
+	print('todo [-d | --delete] <number>')
+
+
+def add(note):
+	# now we open
+	global home
+	todo_file = open(home + "/.todo", "a")
+
+	# now we add
+	todo_file.write(note + "\n")
+
+	# now we close
+	todo_file.close()
+
+	# and final pop-up
+	popup()
+
+
+def delete(number):
+	# now we open
+	global home
+	try:
+		todo_file = open(f"{home}/.todo", "r")
+		lines = todo_file.readlines()
+		todo_file.close()
+	except FileNotFoundError:
+		print("Sorry, $HOME/.todo doesn't exist.")
+		print("Add an element and it will work properly again!")
+		usage()
+		sys.exit(1)
+
+	todo_file = open(f"{home}/.todo", "w")
+
+	# now we delete
+	if len(lines) != 0 and (number <= 0 or number > len(lines)):
+		todo_file.close()
+		usage()
+		print("You can't delete a note that doesn't exist")
+		sys.exit(1)
+
+
+	# putting back
+	for i in range(len(lines)):
+		if i != number-1:
+			todo_file.write(lines[i])
+
+	# now we close
+	todo_file.close()
+
+	# and final pop-up
+	popup()
+
+
+def popup():
+	global image
+
+	# now we open/read/close
+	global home
+	try:
+		todo_file = open(f"{home}/.todo", "r")
+	except FileNotFoundError:
+		print("Sorry, $HOME/.todo doesn't exist.")
+		print("Add an element and it will work properly again!")
+		usage()
+		sys.exit(1)
+
+	todo = todo_file.read();
+	todo_file.close()
+
+	# formating text
+	todo = todo.split("\n")
+
+	# message for notify-send
+	mess = "<span foreground='#75507b'> Todo Weekday</span>\n<span foreground='#627a92'> ============</span>\n<span foreground='#b2a191'>"
+
+	i = 1
+	for note in todo:
+		if i == len(todo):
+			break
+
+		if i == len(todo) - 1:
+			mess += f"{str(i)}. {note}"
+		else:
+			mess += f"{str(i)}. {note}\n"
+
+		i += 1
+
+	if len(todo) == 1:
+		mess += "No tasks."
+
+	mess += "</span>"
+
+
+	# and final popup
+	call(["notify-send","-i",image,mess])
+
+
+def clean():
+	global home
+	try:
+		todo_file = open(f"{home}/.todo", "w")
+		todo_file.close()
+	except FileNotFoundError:
+		print("Sorry, $HOME/.todo doesn't exist.")
+		sys.exit(1)
+
+	popup()
+
+
+def main(argv):
+	if len(argv) == 0:
+		popup()
+		sys.exit(0)
+
+	try:
+		opts, args = getopt.getopt(argv,"ha:d:rc",["help","add","delete","read","clean"])
+
+	except getopt.GetoptError:
+		usage()
+		sys.exit(1)
+
+	for opt, arg in opts:
+		if opt in ("-h", "--help"):
+			usage()
+			sys.exit(0)
+		elif opt in ("-a", "--add"):
+			add(arg)
+			sys.exit(0)
+		elif opt in("-d", "--delete"):
+			try:
+				number = int(arg)
+			except ValueError:
+				usage()
+				sys.exit(1)
+			delete(number)
+			sys.exit(0)
+		elif opt in ("-r", "--read"):
+			popup()
+			sys.exit(0)
+		elif opt in ("-c", "--clean"):
+			clean()
+			sys.exit(0)
+
+
+if __name__ == "__main__":
+	main(sys.argv[1:])
