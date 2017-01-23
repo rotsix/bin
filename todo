@@ -119,7 +119,7 @@ def clean():
 		todo_file = open(f"{home}/.todo", "w")
 		todo_file.close()
 	except FileNotFoundError:
-		print("Sorry, $HOME/.todo doesn't exist.")
+		print(f"Sorry, {home}/.todo doesn't exist.")
 		sys.exit(1)
 
 	popup()
