@@ -70,3 +70,20 @@ font = mono-8
 font2 = FontAwesome-10 # useful for icons
 ```
 
+## brainfuck
+Minimal brainfuck interpreter.
+
+##### Depends
+This script is using python3.6.
+
+##### Install
+Just copy in your `$PATH`.
+
+##### Usage
+```
+brainfuck -f|--file <file>
+brainfuck -e|--exp <expression>
+brainfuck -h|--help
+```
+
+
