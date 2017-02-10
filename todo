@@ -131,7 +131,7 @@ def main(argv):
 		sys.exit(0)
 
 	try:
-		opts, args = getopt.getopt(argv,"ha:d:rc",["help","add","delete","read","clean"])
+		opts, argv = getopt.getopt(argv,"ha:d:rc",["help","add","delete","read","clean"])
 
 	except getopt.GetoptError:
 		usage()
