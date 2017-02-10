@@ -38,16 +38,13 @@ case $1 in
 		test -n "$3" && perc="$3" || perc="5"
 		case $2 in
 			up|+)
-				aplay $HOME/.config/i3/audio-volume-change.wav
 				pactl set-sink-mute "${card}" false
 				pactl set-sink-volume "${card}" +${perc}%
 				;;
 			toggle)
 				pactl set-sink-mute ${card} toggle
-				aplay $HOME/.config/i3/audio-volume-change.wav
 				;;
 			down|-)
-				aplay $HOME/.config/i3/audio-volume-change.wav
 				pactl set-sink-mute "${card}" false
 				pactl set-sink-volume "${card}" -${perc}%
 				;;
@@ -56,6 +53,7 @@ case $1 in
 				exit 1
 				;;
 		esac
+		aplay $HOME/.config/i3/audio-volume-change.wav
 		;;
 	backlight|bl)
 		test -n "$3" && perc="$3" || perc="5"
