@@ -8,12 +8,12 @@ usage () {
 	echo -e "${0}"
 	echo -e "Simple Task Manager"
 	echo -e "  usage : "
-	echo -e "    $(basename $0) backlight|bl +|-|up|down|get [value]"
-	echo -e "    $(basename $0) vol|volume|v +|-|up|toggle|down [value]"
-	echo -e "    $(basename $0) bluetooth|bt start|up|stop|kill|restart|on|off|down"
-	echo -e "    $(basename $0) mysql|sql|sqld|mysqld start|up|stop|kill|restart|on|stop|off"
-	echo -e "    $(basename $0) http|httpd start|up|stop|kill|restart|on|stop|off"
-	echo -e "    $(basename $0) lamp|LAMP start|up|stop|kill|restart|on|stop|off"
+	echo -e "\t$(basename $0) backlight|bl +|-|up|down|get [value]"
+	echo -e "\t$(basename $0) vol|volume|v +|-|up|toggle|down [value]"
+	echo -e "\t$(basename $0) bluetooth|bt start|up|stop|kill|restart|on|off|down"
+	echo -e "\t$(basename $0) mysql|sql|sqld|mysqld start|up|stop|kill|restart|on|stop|off"
+	echo -e "\t$(basename $0) http|httpd start|up|stop|kill|restart|on|stop|off"
+	echo -e "\t$(basename $0) lamp|LAMP start|up|stop|kill|restart|on|stop|off"
 }
 
 
