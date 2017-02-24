@@ -53,7 +53,8 @@ case $1 in
 				exit 1
 				;;
 		esac
-		aplay $HOME/.config/i3/audio-volume-change.wav
+		# set the sound you prefer
+		aplay $HOME/.sounds/popup.wav
 		;;
 	backlight|bl)
 		test -n "$3" && perc="$3" || perc="5"
