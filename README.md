@@ -86,4 +86,16 @@ brainfuck -e|--exp <expression>
 brainfuck -h|--help
 ```
 
+## themer
+Ultra-simple theme manager and switcher
 
+##### Install
+Just copy in your `$PATH`
+
+##### COnfig
+You can directly modify the script to adapt to your uses
+
+#####
+```
+themer <theme name>
+```

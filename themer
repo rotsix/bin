@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+#
+# rotsix - (c) wtfpl 2017
+# simple theme manager
+
+usage () {
+  echo "$0"
+  echo "usage: $(basename "$0") <theme>"
+}
+
+
+files=(termite wallpaper polybar)
+
+
+set_theme () {
+  for i in "${files[@]}"; do
+    case $i in
+      termite)
+        cp -- "$HOME/.config/termite/config.$1" "$HOME/.config/termite/config"
+        ;;
+      wallpaper)
+        cp -- "$HOME/.wallpaper.$1.png" "$HOME/.wallpaper.png"
+        ;;
+      polybar)
+      	cp -- "$HOME/.config/polybar/config.$1" "$HOME/.config/polybar/config"
+      	;;
+      *)
+        echo "This option isn't supported, add it in set_theme()"
+        exit 1
+        ;;
+    esac
+  done
+}
+
+
+reload () {
+  for i in "${files[@]}"; do
+    case $i in
+      termite)
+        pkill -10 termite
+        ;;
+      wallpaper)
+        hsetroot -center "$HOME/.wallpaper.png"
+        ;;
+      polybar)
+      	pkill -10 polybar
+      	;;
+      *)
+        echo "This option isn't supported, add it in reload()"
+        exit 1
+        ;;
+    esac
+  done
+}
+
+
+test -z "$1" && usage && exit 0
+
+case $1 in
+  help|-h|--help)
+  	usage
+  	exit 0
+  	;;
+  light)
+  	set_theme light
+  	reload
+  	;;
+  dark)
+  	set_theme dark
+  	reload
+  	;;
+  *)
+  	echo "This theme is not set, modify the script to add it."
+  	exit 0
+  	;;
+esac
