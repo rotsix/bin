@@ -92,7 +92,7 @@ Ultra-simple theme manager and switcher
 ##### Install
 Just copy in your `$PATH`
 
-##### COnfig
+##### Config
 You can directly modify the script to adapt to your uses
 
 #####
