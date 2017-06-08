@@ -9,7 +9,7 @@ usage () {
 }
 
 
-files=(termite wallpaper polybar)
+files=(termite wallpaper polybar volumeicon)
 
 
 set_theme () {
@@ -23,6 +23,9 @@ set_theme () {
         ;;
       polybar)
       	cp -- "$HOME/.config/polybar/config.$1" "$HOME/.config/polybar/config"
+      	;;
+      volumeicon)
+      	cp -- "$HOME/.config/volumeicon/volumeicon.$1" "$HOME/.config/volumeicon/volumeicon"
       	;;
       *)
         echo "This option isn't supported, add it in set_theme()"
@@ -44,6 +47,11 @@ reload () {
         ;;
       polybar)
       	pkill -10 polybar
+      	;;
+      volumeicon)
+      	killall -q volumeicon 
+      	while pgrep -x volumeicon > /dev/null; do sleep .1; done
+      	volumeicon &> /dev/null &
       	;;
       *)
         echo "This option isn't supported, add it in reload()"
