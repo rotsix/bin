@@ -16,14 +16,48 @@ image = f"{home}/src/bin/todo-icon.svg"
 
 def usage():
 	print('todo [-r | --read]')
+	print('todo [-i | --insert] <number> <note>')
 	print('todo [-a | --add] <note>')
 	print('todo [-d | --delete] <number>')
+	print('todo [-c | --clean]')
+
+
+def insert(number, note):
+	# get current lines
+	global home
+	try:
+		todo_file = open(f"{home}/.todo", "r")
+		lines = todo_file.readlines()
+		todo_file.close()
+	except FileNotFoundError:
+		print("Sorry, $HOME/.todo doesn't exist.")
+		print("Add an element and it will work properly again!")
+		usage()
+		sys.exit(1)
+
+	if number < 0 or number >= len(lines):
+		print("You can't insert this note here")
+		usage()
+		sys.exit(1)
+
+	# adding
+	lines.insert(number, note + "\n")
+
+	# writing
+	todo_file = open(f"{home}/.todo", "w")
+	for i in lines:
+		todo_file.write(i)
+
+	# closing
+	todo_file.close()
+
+	popup()
 
 
 def add(note):
 	# now we open
 	global home
-	todo_file = open(home + "/.todo", "a")
+	todo_file = open(f"{home}/.todo", "a")
 
 	# now we add
 	todo_file.write(note + "\n")
@@ -132,7 +166,7 @@ def main(argv):
 		sys.exit(0)
 
 	try:
-		opts, argv = getopt.getopt(argv,"ha:d:rc",["help","add","delete","read","clean"])
+		opts, argv = getopt.getopt(argv,"hi:a:d:rc",["help","insert", "add","delete","read","clean"])
 
 	except getopt.GetoptError:
 		usage()
@@ -141,6 +175,14 @@ def main(argv):
 	for opt, arg in opts:
 		if opt in ("-h", "--help"):
 			usage()
+			sys.exit(0)
+		elif opt in ("-i", "--insert"):
+			try:
+				number = int(arg)
+			except ValueError:
+				usage()
+				sys.exit(1)
+			insert(number, argv[0])
 			sys.exit(0)
 		elif opt in ("-a", "--add"):
 			add(arg)
