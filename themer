@@ -9,12 +9,12 @@ usage () {
 }
 
 
-files=(termite wallpaper polybar volumeicon)
+files=(termite wallpaper polybar volumeicon gtk-icon)
 
 
 set_theme () {
   for i in "${files[@]}"; do
-    case $i in
+    case "$i" in
       termite)
         cp -- "$HOME/.config/termite/config.$1" "$HOME/.config/termite/config"
         ;;
@@ -26,6 +26,20 @@ set_theme () {
       	;;
       volumeicon)
       	cp -- "$HOME/.config/volumeicon/volumeicon.$1" "$HOME/.config/volumeicon/volumeicon"
+      	;;
+      gtk-icon)
+      	case "$1" in
+      	  light)
+      	   	sed -i "s/^gtk-icon-theme-name=.*$/gtk-icon-theme-name=Numix-Circle-Light/" "$HOME/.config/gtk-3.0/settings.ini"
+      	  	;;
+      	  dark)
+      	  	sed -i "s/^gtk-icon-theme-name=.*$/gtk-icon-theme-name=Numix-Circle/" "$HOME/.config/gtk-3.0/settings.ini"
+      	  	;;
+      	  *)
+      	  	echo "This theme isn't supported, add it in set_theme() for gtk-icon"
+      	  	exit 1
+      	  	;;
+      	esac
       	;;
       *)
         echo "This option isn't supported, add it in set_theme()"
@@ -52,6 +66,12 @@ reload () {
       	killall -q volumeicon 
       	while pgrep -x volumeicon > /dev/null; do sleep .1; done
       	volumeicon &> /dev/null &
+      	;;
+      gtk-icon)
+      	# nm-applet
+      	killall -q nm-applet
+      	while pgrep -x nm-applet > /dev/null; do sleep .1; done
+      	nm-applet &> /dev/null &
       	;;
       *)
         echo "This option isn't supported, add it in reload()"
