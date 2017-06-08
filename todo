@@ -15,7 +15,7 @@ image = f"{home}/src/bin/todo-icon.svg"
 
 
 def usage():
-	print('todo [-r | --read]')
+	print('todo [-r | --read] # default option')
 	print('todo [-i | --insert] <number> <note>')
 	print('todo [-a | --add] <note>')
 	print('todo [-d | --delete] <number>')
