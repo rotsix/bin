@@ -10,7 +10,8 @@ from subprocess import call
 
 # image is used by notify-send, set to "" to disable
 home = os.environ['HOME']
-image = f"{home}/usr/wallpapers/pattern/wall.png"
+#image = f"{home}/usr/wallpapers/pattern/wall.png"
+image = f"{home}/src/bin/todo-icon.svg"
 
 
 def usage():
