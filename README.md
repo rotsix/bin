@@ -17,7 +17,7 @@ todo [-r | --read]
 todo [-a | --add] <note>
 todo [-d | --delete] <number>
 ```
-Without argument, `todu -r` is used.
+Without argument, `todo -r` is used.
 
 ## stm
 Small tasks manager in bash.
