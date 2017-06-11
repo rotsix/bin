@@ -9,7 +9,7 @@ usage () {
 }
 
 
-files=(termite wallpaper polybar volumeicon gtk-icon)
+files=(termite wallpaper polybar volumeicon gtk-icon vim)
 
 
 set_theme () {
@@ -35,6 +35,22 @@ set_theme () {
       	  dark)
       	  	sed -i "s/^gtk-icon-theme-name=.*$/gtk-icon-theme-name=Numix-Circle/" "$HOME/.config/gtk-3.0/settings.ini"
       	  	;;
+      	  *)
+      	  	echo "This theme isn't supported, add it in set_theme() for gtk-icon"
+      	  	exit 1
+      	  	;;
+      	esac
+      	;;
+      vim)
+      	case "$1" in
+		  light)
+		  	sed -i "s/^colorscheme brogrammer$/colorscheme seoul256-light/" "$HOME/.config/nvim/init.vim"
+		  	sed -i "s/\\ 'colorscheme': 'wombat',$/\\ 'colorscheme': 'solarized',/" "$HOME/.config/nvim/init.vim"
+		  	;;
+		  dark)
+		  	sed -i "s/^colorscheme seoul256-light$/colorscheme brogrammer/" "$HOME/.config/nvim/init.vim"
+		  	sed -i "s/\\ 'colorscheme': 'solarized',$/\\ 'colorscheme': 'wombat',/" "$HOME/.config/nvim/init.vim"
+		  	;;
       	  *)
       	  	echo "This theme isn't supported, add it in set_theme() for gtk-icon"
       	  	exit 1
@@ -72,6 +88,8 @@ reload () {
       	killall -q nm-applet
       	while pgrep -x nm-applet > /dev/null; do sleep .1; done
       	nm-applet &> /dev/null &
+      	;;
+      vim)
       	;;
       *)
         echo "This option isn't supported, add it in reload()"
