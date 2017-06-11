@@ -95,7 +95,26 @@ Just copy in your `$PATH`
 ##### Config
 You can directly modify the script to adapt to your uses
 
-#####
+##### Usage
 ```
 themer <theme name>
+```
+
+## bat.sh
+Trololo battery notifier
+
+##### Install
+Just copy in your `$PATH`
+
+##### Config
+You can directly modify the script to adapt to your uses
+
+##### Usage
+```
+## the idea is to launch it with your window manager
+# in i3:
+exec --no-startup-id "/path/to/script"
+
+# in .xinitrc
+nohup bat.sh &
 ```
