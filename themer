@@ -9,7 +9,7 @@ usage () {
 }
 
 
-files=(termite wallpaper polybar volumeicon gtk-icon vim)
+files=(termite wallpaper polybar volumeicon gtk-icon vim dunst)
 
 
 set_theme () {
@@ -57,6 +57,22 @@ set_theme () {
       	  	;;
       	esac
       	;;
+      dunst)
+      	case "$1" in
+      	  light)
+			sed -i "s/^background = \"\#15191B\"$/background = \"\#FDF6E3\"/g" "$HOME/.config/dunst/dunstrc"
+			sed -i "s/^foreground = \"\#a6a6a6\"$/foreground = \"\#073642\"/g" "$HOME/.config/dunst/dunstrc"
+      	  	;;
+      	  dark)
+			sed -i "s/^background = \"\#FDF6E3\"$/background = \"\#15191B\"/g" "$HOME/.config/dunst/dunstrc"
+			sed -i "s/^foreground = \"\#073642\"$/foreground = \"\#a6a6a6\"/g" "$HOME/.config/dunst/dunstrc"
+      	  	;;
+      	  *)
+      	  	echo "This theme isn't supported, add it in set_theme() for gtk-icon"
+      	  	exit 1
+      	  	;;
+      	esac
+      	;;
       *)
         echo "This option isn't supported, add it in set_theme()"
         exit 1
@@ -90,6 +106,11 @@ reload () {
       	nm-applet &> /dev/null &
       	;;
       vim)
+      	;;
+      dunst)
+      	killall -q dunst
+      	while pgrep -x dunst > /dev/null; do sleep .1; done
+      	dunst &> /dev/null &
       	;;
       *)
         echo "This option isn't supported, add it in reload()"
