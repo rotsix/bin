@@ -16,22 +16,24 @@ set_theme () {
   for i in "${files[@]}"; do
     case "$i" in
       termite)
-        cp -- "$HOME/.config/termite/config.$1" "$HOME/.config/termite/config"
+        ln -sf "$HOME/.config/termite/config.$1" "$HOME/.config/termite/config"
         ;;
       wallpaper)
-        cp -- "$HOME/.wallpaper.$1.png" "$HOME/.wallpaper.png"
+        ln -sf "$HOME/.wallpaper.$1.png" "$HOME/.wallpaper.png"
         ;;
       polybar)
       	case "$1" in
       	  light)
-      	  	sed -Ei 's/^background = #[a-fA-F0-9]{6}$/background = #fbf4e1/g' "$HOME/.config/polybar/config"
-      	  	sed -Ei 's/^foreground = #[a-fA-F0-9]{6}$/foreground = #073642/g' "$HOME/.config/polybar/config"
-      	  	sed -Ei 's/^selected = #[a-fA-F0-9]{6}$/selected = #000000/g' "$HOME/.config/polybar/config"
+      	  	sed -Ei -e 's/^background = #[a-fA-F0-9]{6}$/background = #fbf4e1/g' \
+      	  	        -e 's/^foreground = #[a-fA-F0-9]{6}$/foreground = #073642/g' \
+      	  	        -e 's/^selected = #[a-fA-F0-9]{6}$/selected = #000000/g' \
+      	  	        "$HOME/.config/polybar/config"
       	  	;;
       	  dark)
-      	  	sed -Ei 's/^background = #[a-fA-F0-9]{6}$/background = #15191B/g' "$HOME/.config/polybar/config"
-      	  	sed -Ei 's/^foreground = #[a-fA-F0-9]{6}$/foreground = #a6a6a6/g' "$HOME/.config/polybar/config"
-      	  	sed -Ei 's/^selected = #[a-fA-F0-9]{6}$/selected = #FFFFFF/g' "$HOME/.config/polybar/config"
+      	  	sed -Ei -e 's/^background = #[a-fA-F0-9]{6}$/background = #15191B/g' \
+      	  	        -e 's/^foreground = #[a-fA-F0-9]{6}$/foreground = #a6a6a6/g' \
+      	  	        -e 's/^selected = #[a-fA-F0-9]{6}$/selected = #FFFFFF/g' \
+      	  	        "$HOME/.config/polybar/config"
       	  	;;
       	  *)
       	  	echo "This theme isn't supported, add it in set_theme() for polybar"
@@ -40,7 +42,20 @@ set_theme () {
       	esac
       	;;
       volumeicon)
-      	cp -- "$HOME/.config/volumeicon/volumeicon.$1" "$HOME/.config/volumeicon/volumeicon"
+      	case "$1" in
+      	  light)
+      	  	sed -Ei -e 's/^theme=.*$/theme=Dark Gnome/g' \
+      	  	        "$HOME/.config/volumeicon/volumeicon"
+      	  	;;
+      	  dark)
+      	  	sed -Ei -e 's/^theme=.*$/theme=White Gnome/g' \
+      	  	        "$HOME/.config/volumeicon/volumeicon"
+      	  	;;
+      	  *)
+      	  	echo "This theme isn't supported, add it in set_theme() for volumeicon"
+      	  	exit 1
+      	  	;;
+      	esac
       	;;
       gtk-icon)
       	case "$1" in
@@ -59,12 +74,14 @@ set_theme () {
       vim)
       	case "$1" in
 		  light)
-		  	sed -Ei 's/^colorscheme .*$/colorscheme seoul256-light/' "$HOME/.config/nvim/init.vim"
-		  	sed -Ei "s/^\\ 'colorscheme': '.*',$/\\ 'colorscheme': 'solarized',/" "$HOME/.config/nvim/init.vim"
+		  	sed -Ei -e 's/^colorscheme .*$/colorscheme seoul256-light/' \
+		  	        -e "s/^\\ 'colorscheme': '.*',$/\\ 'colorscheme': 'solarized',/" \
+		  	        "$HOME/.config/nvim/init.vim"
 		  	;;
 		  dark)
-		  	sed -Ei 's/^colorscheme .*$/colorscheme brogrammer/' "$HOME/.config/nvim/init.vim"
-		  	sed -Ei "s/^\\ 'colorscheme': '.*',$/\\ 'colorscheme': 'wombat',/" "$HOME/.config/nvim/init.vim"
+		  	sed -Ei -e 's/^colorscheme .*$/colorscheme brogrammer/' \
+		  	        -e "s/^\\ 'colorscheme': '.*',$/\\ 'colorscheme': 'wombat',/" \
+		  	        "$HOME/.config/nvim/init.vim"
 		  	;;
       	  *)
       	  	echo "This theme isn't supported, add it in set_theme() for gtk-icon"
@@ -75,12 +92,15 @@ set_theme () {
       dunst)
       	case "$1" in
       	  light)
-			sed -Ei 's/^background = "#[0-9a-fA-F]{6}"$/background = "#FDF6E3"/g' "$HOME/.config/dunst/dunstrc"
-			sed -Ei 's/^foreground = "#[0-9a-fA-F]{6}"$/foreground = "#073642"/g' "$HOME/.config/dunst/dunstrc"
+			sed -Ei -e 's/^background = "#[0-9a-fA-F]{6}"$/background = "#FDF6E3"/g' \
+			        -e 's/^foreground = "#[0-9a-fA-F]{6}"$/foreground = "#073642"/g' \
+			        -e 's/^icon_folders = .*$/icon_folders = /usr/share/icons/Numix-Circle-Light/16x16/panel/g' \
+			        "$HOME/.config/dunst/dunstrc"
       	  	;;
       	  dark)
-			sed -Ei 's/^background = "#[0-9a-fA-F]{6}"$/background = "#15191B"/g' "$HOME/.config/dunst/dunstrc"
-			sed -Ei 's/^foreground = "#[0-9a-fA-F]{6}"$/foreground = "#a6a6a6"/g' "$HOME/.config/dunst/dunstrc"
+			sed -Ei -e 's/^background = "#[0-9a-fA-F]{6}"$/background = "#15191B"/g' \
+			        -e 's/^foreground = "#[0-9a-fA-F]{6}"$/foreground = "#a6a6a6"/g' \
+			        "$HOME/.config/dunst/dunstrc"
       	  	;;
       	  *)
       	  	echo "This theme isn't supported, add it in set_theme() for gtk-icon"
