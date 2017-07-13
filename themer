@@ -94,12 +94,13 @@ set_theme () {
       	  light)
 			sed -Ei -e 's/^background = "#[0-9a-fA-F]{6}"$/background = "#FDF6E3"/g' \
 			        -e 's/^foreground = "#[0-9a-fA-F]{6}"$/foreground = "#073642"/g' \
-			        -e 's/^icon_folders = .*$/icon_folders = /usr/share/icons/Numix-Circle-Light/16x16/panel/g' \
+			        -e 's/^icon_folders = .*$/icon_folders =  \/usr\/share\/icons\/Numix-Circle-Light\/16x16\/panel/g' \
 			        "$HOME/.config/dunst/dunstrc"
       	  	;;
       	  dark)
 			sed -Ei -e 's/^background = "#[0-9a-fA-F]{6}"$/background = "#15191B"/g' \
 			        -e 's/^foreground = "#[0-9a-fA-F]{6}"$/foreground = "#a6a6a6"/g' \
+			        -e 's/^icon_folders = .*$/icon_folders =  \/usr\/share\/icons\/Numix-Circle\/16x16\/panel/g' \
 			        "$HOME/.config/dunst/dunstrc"
       	  	;;
       	  *)
