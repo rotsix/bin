@@ -16,7 +16,41 @@ set_theme () {
   for i in "${files[@]}"; do
     case "$i" in
       termite)
-        ln -sf "$HOME/.config/termite/config.$1" "$HOME/.config/termite/config"
+        #ln -sf "$HOME/.config/termite/config.$1" "$HOME/.config/termite/config"
+        case "$1" in
+          light)
+          	sed -Ei -e 's/^color0 = #[a-fA-F0-9]{6}$/color0 = #fdf6e3/g' \
+          	        -e 's/^color8 = #[a-fA-F0-9]{6}$/color8 = #a6a6a6/g' \
+          	        -e 's/^color1 = #[a-fA-F0-9]{6}$/color1 = #dc322f/g' \
+          	        -e 's/^color9 = #[a-fA-F0-9]{6}$/color9 = #cb4b16/g' \
+          	        -e 's/^color10 = #[a-fA-F0-9]{6}$/color10 = #9BB300/g' \
+          	        -e 's/^color11 = #[a-fA-F0-9]{6}$/color11 = #839496/g' \
+          	        -e 's/^color12 = #[a-fA-F0-9]{6}$/color12 = #657b83/g' \
+          	        -e 's/^color14 = #[a-fA-F0-9]{6}$/color14 = #548e75/g' \
+          	        -e 's/^color7 = #[a-fA-F0-9]{6}$/color7 = #073642/g' \
+          	        -e 's/^color15 = #[a-fA-F0-9]{6}$/color15 = #002b36/g' \
+          	        -e 's/^background = rgba\([0-9]+,[0-9]+,[0-9]+,0\.[0-9]+\)$/background = rgba(253,246,227,0.9)/g' \
+          	        "$HOME/.config/termite/config"
+          	;;
+          dark)
+          	sed -Ei -e 's/^color0 = #[a-fA-F0-9]{6}$/color0 = #151515/g' \
+          	        -e 's/^color8 = #[a-fA-F0-9]{6}$/color8 = #606060/g' \
+          	        -e 's/^color1 = #[a-fA-F0-9]{6}$/color1 = #cb2b16/g' \
+          	        -e 's/^color9 = #[a-fA-F0-9]{6}$/color9 = #dc322f/g' \
+          	        -e 's/^color10 = #[a-fA-F0-9]{6}$/color10 = #1Aff28/g' \
+          	        -e 's/^color11 = #[a-fA-F0-9]{6}$/color11 = #fff200/g' \
+          	        -e 's/^color12 = #[a-fA-F0-9]{6}$/color12 = #0073ff/g' \
+          	        -e 's/^color14 = #[a-fA-F0-9]{6}$/color14 = #00e6ff/g' \
+          	        -e 's/^color7 = #[a-fA-F0-9]{6}$/color7 = #a6a6a6/g' \
+          	        -e 's/^color15 = #[a-fA-F0-9]{6}$/color15 = #fdfdfd/g' \
+          	        -e 's/^background = rgba\([0-9]+,[0-9]+,[0-9]+,0\.[0-9]+\)$/background = rgba(21,25,27,0.9)/g' \
+          	        "$HOME/.config/termite/config"
+          	;;
+          *)
+          	echo "This theme isn't supported, add it in set_theme() for termite"
+          	exit 1
+          	;;
+        esac
         ;;
       wallpaper)
         ln -sf "$HOME/.wallpaper.$1.png" "$HOME/.wallpaper.png"
@@ -94,13 +128,13 @@ set_theme () {
       	  light)
 			sed -Ei -e 's/^background = "#[0-9a-fA-F]{6}"$/background = "#FDF6E3"/g' \
 			        -e 's/^foreground = "#[0-9a-fA-F]{6}"$/foreground = "#073642"/g' \
-			        -e 's/^icon_folders = .*$/icon_folders =  \/usr\/share\/icons\/Numix-Circle-Light\/16x16\/panel/g' \
+			        -e 's/^icon_folders = .*$/icon_folders = \/usr\/share\/icons\/Numix-Circle-Light\/16x16\/panel/g' \
 			        "$HOME/.config/dunst/dunstrc"
       	  	;;
       	  dark)
 			sed -Ei -e 's/^background = "#[0-9a-fA-F]{6}"$/background = "#15191B"/g' \
 			        -e 's/^foreground = "#[0-9a-fA-F]{6}"$/foreground = "#a6a6a6"/g' \
-			        -e 's/^icon_folders = .*$/icon_folders =  \/usr\/share\/icons\/Numix-Circle\/16x16\/panel/g' \
+			        -e 's/^icon_folders = .*$/icon_folders = \/usr\/share\/icons\/Numix-Circle\/16x16\/panel/g' \
 			        "$HOME/.config/dunst/dunstrc"
       	  	;;
       	  *)
