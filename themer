@@ -44,7 +44,7 @@ set_theme () {
       volumeicon)
       	case "$1" in
       	  light)
-      	  	sed -Ei -e 's/^theme=.*$/theme=Dark Gnome/g' \
+      	  	sed -Ei -e 's/^theme=.*$/theme=Black Gnome/g' \
       	  	        "$HOME/.config/volumeicon/volumeicon"
       	  	;;
       	  dark)
