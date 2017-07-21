@@ -8,28 +8,28 @@ usage () {
 	echo -e "${0}"
 	echo -e "Simple Task Manager"
 	echo -e "  usage : "
-	echo -e "\t$(basename $0) backlight|bl +|-|up|down|get [value]"
-	echo -e "\t$(basename $0) vol|volume|v +|-|up|toggle|down [value]"
-	echo -e "\t$(basename $0) bluetooth|bt start|up|stop|kill|restart|on|off|down"
-	echo -e "\t$(basename $0) mysql|sql|sqld|mysqld start|up|stop|kill|restart|on|stop|off"
-	echo -e "\t$(basename $0) http|httpd start|up|stop|kill|restart|on|stop|off"
-	echo -e "\t$(basename $0) lamp|LAMP start|up|stop|kill|restart|on|stop|off"
+	echo -e "\t$(basename "$0") backlight|bl +|-|up|down|get [value]"
+	echo -e "\t$(basename "$0") vol|volume|v +|-|up|toggle|down [value]"
+	echo -e "\t$(basename "$0") bluetooth|bt start|up|stop|kill|restart|on|off|down"
+	echo -e "\t$(basename "$0") mysql|sql|sqld|mysqld start|up|stop|kill|restart|on|stop|off"
+	echo -e "\t$(basename "$0") http|httpd start|up|stop|kill|restart|on|stop|off"
+	echo -e "\t$(basename "$0") lamp|LAMP start|up|stop|kill|restart|on|stop|off"
 }
 
 
 if [ -z "$1" ]; then
-	echo "$(usage)"
+	usage
 	exit 1
 fi
 
-if [ -z "$2" -a "$1" != "help" -a "$1" != "h" -a "$1" != "-h" -a "$1" != "--help" ]; then
-	echo "$(usage)"
+if [ -z "$2" ] && [ "$1" != "help" ] && [ "$1" != "h" ] && [ "$1" != "-h" ] && [ "$1" != "--help" ]; then
+	usage
 	exit 1
 fi
 
 case $1 in
 	help|h|-h|--help)
-		echo "$(usage)"
+		usage
 		exit 0
 		;;
 	vol|volume|v)
@@ -49,15 +49,15 @@ case $1 in
 				pactl set-sink-volume "${card}" -${perc}%
 				;;
 			*)
-				echo "$(usage)"
+				usage
 				exit 1
 				;;
 		esac
 		# set the sound you prefer
-		aplay $HOME/.sounds/popup.wav
+		aplay "$HOME/.sounds/popup.wav"
 		;;
 	backlight|bl)
-		test -n "$3" && perc="$3" || perc="5"
+		test -n "$3" && perc="$3" || perc="2"
 		#actual="$(brightnessctl get | grep "Current" | cut -d '(' -f 2 | cut -d '%' -f 1)"
 		case $2 in
 			+|up)
@@ -70,7 +70,7 @@ case $1 in
 				brightnessctl get
 				;;
 			*)
-				echo "$(usage)"
+				usage
 				exit 1
 				;;
 		esac
@@ -90,7 +90,7 @@ case $1 in
 				echo "Bluetooth restarted"
 				;;
 			*)
-				echo "$(usage)"
+				usage
 				exit 1
 				;;
 		esac
@@ -111,7 +111,7 @@ case $1 in
 				echo "MySQL daemon restarted"
 				;;
 			*)
-				echo "$(usage)"
+				usage
 				exit 1
 				;;
 		esac
@@ -132,7 +132,7 @@ case $1 in
 				echo "HTTP daemon restarted"
 				;;
 			*)
-				echo "$(usage)"
+				usage
 				exit 1
 				;;
 		esac
@@ -153,13 +153,13 @@ case $1 in
 				stm httm restart
 				;;
 			*)
-				echo "$(usage)"
+				usage
 				exit 1
 				;;
 		esac
 		;;
 	*)
-		echo "$(usage)"
+		usage
 		exit 1
 		;;
 esac
