@@ -176,6 +176,7 @@ reload () {
       	nm-applet &> /dev/null &
       	;;
       vim)
+      	themer.neovim.py
       	;;
       dunst)
       	killall -q dunst
