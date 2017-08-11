@@ -136,3 +136,20 @@ Example:
 7
 ```
 
+## get-window-criteria
+Get windows' criteria
+
+##### Install
+Just copy in your `$PATH`
+
+##### Usage
+Run this script, then click on a window
+Output is in the format: `[<name>=<value> <name2>=<value2> ...]`
+
+Example:
+
+```
+./get-window-criteria
+Clicking on this terminal, and returns this:
+[class="Termite" id=44040195 instance="termite" title="nvim README.md"]
+```
