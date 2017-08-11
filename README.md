@@ -121,6 +121,7 @@ nohup bat.sh &
 
 ## =
 Calculator for use with rofi/dmenu(2)
+
 Stolen from [here](https://github.com/onespaceman/menu-calc)
 
 ##### Install
