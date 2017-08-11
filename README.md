@@ -118,3 +118,21 @@ exec --no-startup-id "/path/to/script"
 # in .xinitrc
 nohup bat.sh &
 ```
+
+## =
+Calculator for use with rofi/dmenu(2)
+Stolen from [here](https://github.com/onespaceman/menu-calc)
+
+##### Install
+Just copy in your `$PATH`
+
+##### Usage
+Use rofi/dmenu(2), and type `= <equation>`
+
+Example:
+
+```
+= 4+3
+7
+```
+
