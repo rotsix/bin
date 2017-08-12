@@ -16,7 +16,6 @@ set_theme () {
   for i in "${files[@]}"; do
     case "$i" in
       termite)
-        #ln -sf "$HOME/.config/termite/config.$1" "$HOME/.config/termite/config"
         case "$1" in
           light)
           	sed -Ei -e 's/^color0 = #[a-fA-F0-9]{6}$/color0 = #fdf6e3/g' \
@@ -53,7 +52,7 @@ set_theme () {
         esac
         ;;
       wallpaper)
-        ln -sf "$HOME/.wallpaper.$1.png" "$HOME/.wallpaper.png"
+        ln -sf "$HOME/dotfiles/wallpaper/.wallpaper.$1.png" "$HOME/.wallpaper.png"
         ;;
       polybar)
       	case "$1" in
@@ -162,7 +161,7 @@ reload () {
         hsetroot -center "$HOME/.wallpaper.png"
         ;;
       polybar)
-      	pkill -10 polybar
+      	"$HOME/.config/polybar/manager.sh" reload top
       	;;
       volumeicon)
       	killall -q volumeicon 
