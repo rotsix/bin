@@ -17,9 +17,17 @@ image = f"{home}/bin/todo-icon.svg"
 def usage():
 	print('todo [-r | --read] # default option')
 	print('todo [-i | --insert] <number> <note>')
+	print("todo [-m | --move] '<origine> <destination>' /!\\")
 	print('todo [-a | --add] <note>')
 	print('todo [-d | --delete] <number>')
 	print('todo [-c | --clean]')
+
+
+def move(orig, dest):
+	# lol, easy
+	tmp = delete(orig)
+	insert(dest-1, tmp.replace("\n", ""))
+	popup()
 
 
 def insert(number, note):
@@ -35,7 +43,9 @@ def insert(number, note):
 		usage()
 		sys.exit(1)
 
-	if number < 0 or number >= len(lines):
+	if number == len(lines):
+		add(note)
+	elif number < 0 or number > len(lines):
 		print("You can't insert this note here")
 		usage()
 		sys.exit(1)
@@ -68,6 +78,9 @@ def add(note):
 	# and final pop-up
 	popup()
 
+	# return the added item
+	return note
+
 
 def delete(number):
 	# now we open
@@ -93,15 +106,21 @@ def delete(number):
 
 
 	# putting back
+	tmp = None
 	for i in range(len(lines)):
 		if i != number-1:
 			todo_file.write(lines[i])
+		else:
+			tmp = lines[i]
 
 	# now we close
 	todo_file.close()
 
 	# and final pop-up
 	popup()
+
+	# return the deleted item
+	return tmp
 
 
 def popup():
@@ -166,7 +185,7 @@ def main(argv):
 		sys.exit(0)
 
 	try:
-		opts, argv = getopt.getopt(argv,"hi:a:d:rc",["help","insert", "add","delete","read","clean"])
+		opts, argv = getopt.getopt(argv,"hi:a:d:m:rc",["help","insert", "add","delete","move","read","clean"])
 
 	except getopt.GetoptError:
 		usage()
@@ -175,7 +194,6 @@ def main(argv):
 	for opt, arg in opts:
 		if opt in ("-h", "--help"):
 			usage()
-			sys.exit(0)
 		elif opt in ("-i", "--insert"):
 			try:
 				number = int(arg)
@@ -183,10 +201,8 @@ def main(argv):
 				usage()
 				sys.exit(1)
 			insert(number, argv[0])
-			sys.exit(0)
 		elif opt in ("-a", "--add"):
 			add(arg)
-			sys.exit(0)
 		elif opt in("-d", "--delete"):
 			try:
 				number = int(arg)
@@ -194,13 +210,20 @@ def main(argv):
 				usage()
 				sys.exit(1)
 			delete(number)
-			sys.exit(0)
 		elif opt in ("-r", "--read"):
 			popup()
-			sys.exit(0)
 		elif opt in ("-c", "--clean"):
 			clean()
-			sys.exit(0)
+		elif opt in ("-m", "--move"):
+			tmp = arg.split(' ')
+			try:
+				tmp[0] = int(tmp[0])
+				tmp[1] = int(tmp[1])
+			except ValueError:
+				usage()
+				sys.exit(1)
+			move(tmp[0], tmp[1])
+			popup()
 
 
 if __name__ == "__main__":
