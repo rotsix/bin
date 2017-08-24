@@ -108,12 +108,12 @@ set_theme () {
       	case "$1" in
 		  light)
 		  	sed -Ei -e 's/^colorscheme .*$/colorscheme seoul256-light/' \
-		  	        -e "s/^\\ 'colorscheme': '.*',$/\\ 'colorscheme': 'solarized',/" \
+		  	        -e "s/\\ 'colorscheme': '.*',$/\\ 'colorscheme': 'solarized',/" \
 		  	        "$HOME/.config/nvim/init.vim"
 		  	;;
 		  dark)
 		  	sed -Ei -e 's/^colorscheme .*$/colorscheme brogrammer/' \
-		  	        -e "s/^\\ 'colorscheme': '.*',$/\\ 'colorscheme': 'wombat',/" \
+		  	        -e "s/\\ 'colorscheme': '.*',$/\\ 'colorscheme': 'wombat',/" \
 		  	        "$HOME/.config/nvim/init.vim"
 		  	;;
       	  *)

@@ -13,5 +13,8 @@ try:
     for p in neovimInstances:
         nvim = attach('socket', path=p)
         nvim.command('source ~/.config/nvim/init.vim', async=True)
+        nvim.command('call lightline#init()')
+        nvim.command('call lightline#colorscheme()')
+        nvim.command('call lightline#update()')
 except ConnectionRefusedError:
     pass
