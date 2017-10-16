@@ -154,3 +154,20 @@ Example:
 Clicking on this terminal, and returns this:
 [class="Termite" id=44040195 instance="termite" title="nvim README.md"]
 ```
+
+## memo
+Want some small memos ? Use it
+
+##### Install
+Just copy in your `$PATH`
+
+##### Usage
+
+```
+memo list|show|l|s	    	simple `tree $memo_dir`
+memo add|a <item>	    	create the selected item (and directories if needed)
+memo edit|e <item>	    	edit the selected item
+memo delete|d <item|dir>	delete the selected item (directory requires -r option)
+memo git|g <git-command>	uses git directly, so uses ~/.gitconfig
+memo help|h|?		    	display this message
+```
