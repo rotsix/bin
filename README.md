@@ -131,7 +131,6 @@ Just copy in your `$PATH`
 Use rofi/dmenu(2), and type `= <equation>`
 
 Example:
-
 ```
 = 4+3
 7
@@ -148,7 +147,6 @@ Run this script, then click on a window
 Output is in the format: `[<name>=<value> <name2>=<value2> ...]`
 
 Example:
-
 ```
 ./get-window-criteria
 Clicking on this terminal, and returns this:
@@ -162,7 +160,6 @@ Want some small memos ? Use it
 Just copy in your `$PATH`
 
 ##### Usage
-
 ```
 memo list|show|l|s	    	simple `tree $memo_dir`
 memo add|a <item>	    	create the selected item (and directories if needed)
@@ -170,4 +167,22 @@ memo edit|e <item>	    	edit the selected item
 memo delete|d <item|dir>	delete the selected item (directory requires -r option)
 memo git|g <git-command>	uses git directly, so uses ~/.gitconfig
 memo help|h|?		    	display this message
+```
+
+## wait.py
+10-lines python API to create some 'wait' symbols
+
+##### Install
+Copy it in your project folder, and `import wait`
+
+##### Usage
+```python
+import wait
+
+def boolean_func():
+    # some code
+    return True || (False && not True)
+
+# some other code
+wait.wait(2, boolean_func)
 ```
