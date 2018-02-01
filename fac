@@ -1,0 +1,7 @@
+#!/bin/bash
+
+git add -A
+git commit -m "$(hostname)"
+git push
+ssh franzi@lucien.informatique.univ-paris-diderot.fr 'cd cours/; git pull'
+ssh franzi@lucien.informatique.univ-paris-diderot.fr
