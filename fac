@@ -1,7 +1,11 @@
 #!/bin/bash
+echo "local: git push"
+git add -A > /dev/null 2>&1
+git commit -m "$(hostname)" > /dev/null 2>&1
+git push > /dev/null 2>&1
 
-git add -A
-git commit -m "$(hostname)"
-git push
-ssh franzi@lucien.informatique.univ-paris-diderot.fr 'cd cours/; git pull'
-ssh franzi@lucien.informatique.univ-paris-diderot.fr
+echo "fac: git pull"
+ssh franzi@lucien.informatique.univ-paris-diderot.fr 'cd cours/; git pull' > /dev/null 2>&1
+
+echo "fac: ssh+cd"
+ssh franzi@lucien.informatique.univ-paris-diderot.fr -t "cd '/info/nouveaux/franzi/'$(pwd | cut -d '/' -f4-); bash"
