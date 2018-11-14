@@ -12,12 +12,12 @@ memo_dir="$HOME/memo"
 usage () {
     echo "$0"
     echo -e "usage:"
-    echo -e "\t$(basename "$0") list|show|l|s\t\tsimple \`tree \$memo_dir\`"
-    echo -e "\t$(basename "$0") add|a <item>\t\tcreate the selected item (and directories if needed)"
-    echo -e "\t$(basename "$0") edit|e <item>\t\tedit the selected item"
-    echo -e "\t$(basename "$0") delete|d <item|dir>\tdelete the selected item (directory requires -r option)"
-    echo -e "\t$(basename "$0") git|g <git-command>\tuses git directly, so uses ~/.gitconfig"
-    echo -e "\t$(basename "$0") help|h|?\t\t\tdisplay this message"
+    echo -e "\\t$(basename "$0") list|show|l|s\\t\\tsimple \`tree \$memo_dir\`"
+    echo -e "\\t$(basename "$0") add|a <item>\\t\\tcreate the selected item (and directories if needed)"
+    echo -e "\\t$(basename "$0") edit|e <item>\\t\\tedit the selected item"
+    echo -e "\\t$(basename "$0") delete|d <item|dir>\\tdelete the selected item (directory requires -r option)"
+    echo -e "\\t$(basename "$0") git|g <git-command>\\tuses git directly, so uses ~/.gitconfig"
+    echo -e "\\t$(basename "$0") help|h|?\\t\\t\\tdisplay this message"
 }
 
 die () {
