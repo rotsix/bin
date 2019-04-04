@@ -34,6 +34,7 @@ You can directly modify the script to adapt to your uses.
 ```
 stm backlight|bl +|-|up|down|get [value]
 stm vol|volume|v +|-|up|toggle|down [value]
+stm mic|micro|microphone|m toggle
 stm bluetooth|bt start|up|stop|kill|restart|on|off|down
 stm mysql|sql|sqld|mysqld start|up|stop|kill|restart|on|stop|off
 stm http|httpd start|up|stop|kill|restart|on|stop|off

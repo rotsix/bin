@@ -60,6 +60,19 @@ case $1 in
 		# set the sound you prefer
 		aplay "$HOME/.sounds/popup.wav"
 		;;
+	mic|micro|microphone|m)
+		card_laptop="alsa_input.pci-0000_00_1b.0.analog-stereo"
+		card=$card_laptop
+		case $2 in
+			toggle)
+				pactl set-source-mute "${card}" toggle
+				;;
+			*)
+				usage
+				exit 1
+				;;
+		esac
+		;;
 	backlight|bl)
 		test -n "$3" && perc="$3" || perc="2"
 		#actual="$(brightnessctl get | grep "Current" | cut -d '(' -f 2 | cut -d '%' -f 1)"
