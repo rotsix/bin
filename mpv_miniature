@@ -1,3 +1,0 @@
-#!/bin/bash
-
-/usr/bin/mpv --geometry=384x216-144-80 --osd-level=3 "$@"
