@@ -32,7 +32,6 @@ def move(orig, dest):
 
 def insert(number, note):
 	# get current lines
-	global home
 	try:
 		todo_file = open(f"{home}/.todo", "r")
 		lines = todo_file.readlines()
@@ -84,7 +83,6 @@ def add(note):
 
 def delete(number):
 	# now we open
-	global home
 	try:
 		todo_file = open(f"{home}/.todo", "r")
 		lines = todo_file.readlines()
