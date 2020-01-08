@@ -3,7 +3,7 @@
 Here is some small scripts I use.
 
 ## todo
-Small todo list in python 3.6+ (f-strings).
+Small todo list in python 3.6+.
 
 ##### Install
 Just copy in your `$PATH`.
@@ -59,7 +59,7 @@ You can directly modify the script to adapt to your uses.
 popup [-h|-t duration|-g geometry|-p position|-B bgcolor|-F fgcolor|-f font] <thing to display>"
 ```
 
-There is some defaults : 
+There is some defaults :
 
 ```
 duration = 5
@@ -75,7 +75,7 @@ font2 = FontAwesome-10 # useful for icons
 Minimal brainfuck interpreter.
 
 ##### Depends
-This script is using python3.6.
+This script is using python3.6+.
 
 ##### Install
 Just copy in your `$PATH`.
@@ -187,4 +187,3 @@ def boolean_func():
 # some other code
 wait.wait(2, boolean_func)
 ```
-
