@@ -1,6 +1,6 @@
 # bin
 
-Here is some small scripts I use.
+Here are some small scripts I use.
 
 ## todo
 Small todo list in python 3.6+.
