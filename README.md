@@ -22,7 +22,7 @@ Without argument, `todo -r` is used.
 ## stm
 Small tasks manager in bash.
 
-**Adapted for** `systemd` **!**
+**Suitable for** `systemd` only**!**
 
 ##### Install
 Just copy in your `$PATH`.
@@ -45,8 +45,8 @@ stm lamp|LAMP start|up|stop|kill|restart|on|stop|off
 Little script to display pop-ups using lemonboy's bar.
 
 ##### Depends
-This script depends on lemonboy's bar (since it's a little wrapper).
-You can use the xft-fork for xft fonts.
+This script depends on lemonboy's bar (since it's only a wrapper).
+You can use the `xft-fork` for xft fonts.
 
 ##### Install
 Just copy in your `$PATH`.
@@ -59,7 +59,7 @@ You can directly modify the script to adapt to your uses.
 popup [-h|-t duration|-g geometry|-p position|-B bgcolor|-F fgcolor|-f font] <thing to display>"
 ```
 
-There is some defaults :
+Defaults:
 
 ```
 duration = 5
@@ -75,7 +75,7 @@ font2 = FontAwesome-10 # useful for icons
 Minimal brainfuck interpreter.
 
 ##### Depends
-This script is using python3.6+.
+This script is using Python 3.6+.
 
 ##### Install
 Just copy in your `$PATH`.
@@ -88,13 +88,13 @@ brainfuck -h|--help
 ```
 
 ## themer
-Ultra-simple theme manager and switcher
+Ultra-simple theme manager and switcher.
 
 ##### Install
 Just copy in your `$PATH`
 
 ##### Config
-You can directly modify the script to adapt to your uses
+You can directly modify the script to adapt to your uses.
 
 ##### Usage
 ```
@@ -102,13 +102,13 @@ themer <theme name>
 ```
 
 ## bat.sh
-Trololo battery notifier
+Trololo battery notifier.
 
 ##### Install
-Just copy in your `$PATH`
+Just copy in your `$PATH`.
 
 ##### Config
-You can directly modify the script to adapt to your uses
+You can directly modify the script to adapt to your uses.
 
 ##### Usage
 ```
@@ -121,15 +121,15 @@ nohup bat.sh &
 ```
 
 ## =
-Calculator for use with rofi/dmenu(2)
+Calculator for use with rofi/dmenu(2).
 
-Stolen from [here](https://github.com/onespaceman/menu-calc)
+Stolen from [here](https://github.com/onespaceman/menu-calc).
 
 ##### Install
-Just copy in your `$PATH`
+Just copy in your `$PATH`.
 
 ##### Usage
-Use rofi/dmenu(2), and type `= <equation>`
+Use rofi/dmenu(2), and type `= <equation>`.
 
 Example:
 ```
@@ -138,14 +138,16 @@ Example:
 ```
 
 ## get-window-criteria
-Get windows' criteria
+Get windows' criteria.
 
 ##### Install
 Just copy in your `$PATH`
 
 ##### Usage
-Run this script, then click on a window
-Output is in the format: `[<name>=<value> <name2>=<value2> ...]`
+Run this script, then click on a window.
+Output is in the format: `[<name>=<value> <name2>=<value2> ...]`.
+
+> Note: wayland is not supported.
 
 Example:
 ```
@@ -155,7 +157,7 @@ Clicking on this terminal, and returns this:
 ```
 
 ## memo
-Want some small memos ? Use it
+Want some small memos ? Use it.
 
 ##### Install
 Just copy in your `$PATH`
@@ -168,22 +170,4 @@ memo edit|e <item>	    	edit the selected item
 memo delete|d <item|dir>	delete the selected item (directory requires -r option)
 memo git|g <git-command>	uses git directly, so uses ~/.gitconfig
 memo help|h|?		    	display this message
-```
-
-## wait.py
-10-lines python API to create some 'wait' symbols
-
-##### Install
-Copy it in your project folder, and `import wait`
-
-##### Usage
-```python
-import wait
-
-def boolean_func():
-    # some code
-    return True || (False && not True)
-
-# some other code
-wait.wait(2, boolean_func)
 ```
