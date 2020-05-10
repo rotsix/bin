@@ -7,5 +7,5 @@ while true; do
 		notify-send --urgency=critical "low battery" "battery: $actual%"
 	fi
 
-	sleep 2m
+	sleep 5m
 done
