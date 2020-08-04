@@ -122,3 +122,16 @@ memo delete|d <item|dir>	delete the selected item (directory requires -r option)
 memo git|g <git-command>	uses git directly, so uses ~/.gitconfig
 memo help|h|?		    	display this message
 ```
+
+## post
+Create a new post on my blog
+
+##### Install
+Just copy in your `$PATH`
+
+##### Usage
+```
+post <my title>
+```
+
+It creates `YYYY-MM-DD-my-title.md` and fill the header.

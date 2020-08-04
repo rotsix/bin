@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# https://stackoverflow.com/a/17841619 - join array elements in bash
+IFS="-"
+
+today="$(date '+%F')"
+now="$(date '+%T %z')"
+filename="$today-${*,,}.md"
+
+header="$(cat <<EOF
+---
+layout: post
+title: $*
+date: $today $now
+---
+
+# $*
+EOF
+)"
+
+if [ -z "$*" ]; then
+	echo "please provide a title"
+	exit 1
+fi
+
+if [ -f "$filename" ]; then
+	echo "file already exist"
+	exit 1
+fi
+
+echo "$header" > "$filename"
