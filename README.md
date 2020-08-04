@@ -22,7 +22,7 @@ Without argument, `todo -r` is used.
 ## stm
 Small tasks manager in bash.
 
-**Suitable for** `systemd` only**!**
+**Suitable for `systemd` only!**
 
 ##### Install
 Just copy in your `$PATH`.
@@ -37,38 +37,8 @@ stm vol|volume|v +|-|up|toggle|down [value]
 stm mic|micro|microphone|m toggle
 stm bluetooth|bt start|up|stop|kill|restart|on|off|down
 stm mysql|sql|sqld|mysqld start|up|stop|kill|restart|on|stop|off
-stm http|httpd start|up|stop|kill|restart|on|stop|off
-stm lamp|LAMP start|up|stop|kill|restart|on|stop|off
-```
-
-## popup
-Little script to display pop-ups using lemonboy's bar.
-
-##### Depends
-This script depends on lemonboy's bar (since it's only a wrapper).
-You can use the `xft-fork` for xft fonts.
-
-##### Install
-Just copy in your `$PATH`.
-
-##### Config
-You can directly modify the script to adapt to your uses.
-
-##### Usage
-```
-popup [-h|-t duration|-g geometry|-p position|-B bgcolor|-F fgcolor|-f font] <thing to display>"
-```
-
-Defaults:
-
-```
-duration = 5
-geometry = 100x40+20+20
-position = center
-bgcolor = '#202020'
-fgcolor = '#C6C6C6'
-font = mono-8
-font2 = FontAwesome-10 # useful for icons
+stm http|httpd start|up|stop|kill|restart|on|off
+stm lamp|LAMP start|up|stop|kill|restart|on|off
 ```
 
 ## brainfuck
@@ -99,25 +69,6 @@ You can directly modify the script to adapt to your uses.
 ##### Usage
 ```
 themer <theme name>
-```
-
-## bat.sh
-Trololo battery notifier.
-
-##### Install
-Just copy in your `$PATH`.
-
-##### Config
-You can directly modify the script to adapt to your uses.
-
-##### Usage
-```
-## the idea is to launch it with your window manager
-# in i3:
-exec --no-startup-id "/path/to/script"
-
-# in .xinitrc
-nohup bat.sh &
 ```
 
 ## =

@@ -5,16 +5,12 @@
 
 import os
 from neovim import attach
+from glob import glob
 
 try:
-    from neovim import attach
-    from glob import glob
-    neovimInstances = glob('/tmp/nvim*/0')
+    neovimInstances = glob("/tmp/nvim*/0")
     for p in neovimInstances:
-        nvim = attach('socket', path=p)
-        nvim.command('source ~/.config/nvim/init.vim', async=True)
-        nvim.command('call lightline#init()')
-        nvim.command('call lightline#colorscheme()')
-        nvim.command('call lightline#update()')
+        nvim = attach("socket", path=p)
+        nvim.command("source ~/.config/nvim/init.vim")
 except ConnectionRefusedError:
     pass
