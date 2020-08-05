@@ -4,14 +4,13 @@
 IFS="-"
 
 today="$(date '+%F')"
-now="$(date '+%T %z')"
 filename="$today-${*,,}.md"
 
 header="$(cat <<EOF
 ---
 layout: post
 title: $*
-date: $today $now
+date: $today
 ---
 
 # $*
