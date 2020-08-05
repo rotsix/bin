@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 #
 # rotsix - (c) wtfpl 2017
 # reload all neovim sessions
