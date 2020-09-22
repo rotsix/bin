@@ -61,7 +61,7 @@ case $1 in
 		aplay "$HOME/.sounds/popup.wav"
 		;;
 	mic|micro|microphone|m)
-		card_laptop="alsa_input.pci-0000_00_1b.0.analog-stereo"
+		card_laptop="alsa_input.pci-0000_00_1f.3.analog-stereo"
 		card=$card_laptop
 		case $2 in
 			toggle)
