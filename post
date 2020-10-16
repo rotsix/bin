@@ -14,6 +14,8 @@ date: $today
 ---
 
 # $*
+
+
 EOF
 )"
 
@@ -28,3 +30,5 @@ if [ -f "$filename" ]; then
 fi
 
 echo "$header" > "$filename"
+
+exec nvim "$filename" +8
